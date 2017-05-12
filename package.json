@@ -1,0 +1,33 @@
+{
+  "name": "nads",
+  "version": "1.0.0",
+  "description": "Algorithms and Data Structures in Javascript(node)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larunrahul/NADS.git"
+  },
+  "keywords": [
+    "Javascript Algorithms",
+    "Algorithms in Javascript",
+    "sort",
+    "search",
+    "trees",
+    "graphs"
+  ],
+  "author": "Arun Rahul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larunrahul/NADS/issues"
+  },
+  "homepage": "https://github.com/larunrahul/NADS#readme",
+  "dependencies": {
+    "mocha": "^3.3.0"
+  }
+}
