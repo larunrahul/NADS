@@ -2,7 +2,7 @@ let Heap = require("../element/Heap.js");
 module.exports = (function() {
 
     function parent(node) {
-        return node == 0 ? node : (node % 2 == 0 ? node / 2 - 1 : node / 2);
+        return node == 0 ? node : (node % 2 == 0 ? Math.floor(node / 2) - 1 : Math.floor(node / 2));
     }
 
     function leftChild(node) {
@@ -32,15 +32,15 @@ module.exports = (function() {
         }
     }
 
-    return function MinHeap(array){
+    return function MinHeap(array) {
         this.parent = parent;
         this.leftChild = leftChild;
         this.rightChild = rightChild;
         this.heapify = heapify;
         let heap = new Heap(array, array.length - 1);
         this.heap = heap;
-        for(let i = array.length /2 -1; i >=0; i--){
-          this.heapify(i);
+        for (let i = Math.floor(array.length / 2) - 1; i >= 0; i--) {
+            this.heapify(i);
         }
     };
 
