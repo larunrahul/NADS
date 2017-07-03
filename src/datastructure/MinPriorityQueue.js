@@ -33,7 +33,7 @@ module.exports = (function() {
     function insert(key) {
         let heap = this.minHeap.heap;
         heap.heapSize += 1;
-        heap.array[heap.heapSize] = Math.NEGATIVE_INFINITY;
+        heap.array[heap.heapSize] = Number.POSITIVE_INFINITY;
         this.decreaseKey(heap.heapSize, key);
     }
 
