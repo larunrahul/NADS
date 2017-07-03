@@ -16,10 +16,10 @@ module.exports = (function() {
         return min;
     }
 
-    function increaseKey(node, key) {
+    function decreaseKey(node, key) {
         let heap = this.minHeap.heap;
-        if (key < heap.array[node]) {
-            throw new Error("New key is smaller than current key");
+        if (key > heap.array[node]) {
+            throw new Error("New key is greater than current key");
         }
         heap.array[node] = key;
         while (node > 0 && heap.array[this.minHeap.parent(node)] > heap.array[node]) {
@@ -34,14 +34,14 @@ module.exports = (function() {
         let heap = this.minHeap.heap;
         heap.heapSize += 1;
         heap.array[heap.heapSize] = Math.NEGATIVE_INFINITY;
-        this.increaseKey(heap.heapSize, key);
+        this.decreaseKey(heap.heapSize, key);
     }
 
     return function MinPriorityQueue(array) {
         this.minHeap = new MinHeap(array);
         this.minimum = minimum;
         this.extractMinimum = extractMinimum;
-        this.increaseKey = increaseKey;
+        this.decreaseKey = decreaseKey;
         this.insert = insert;
     }
 })();
