@@ -30,11 +30,24 @@ module.exports = (function() {
         }
     }
 
-    function insert(key) {
+    function heapInsert(key) {
         let heap = this.maxHeap.heap;
         heap.heapSize += 1;
         heap.array[heap.heapSize] = Number.NEGATIVE_INFINITY;
         this.increaseKey(heap.heapSize, key);
+    }
+
+    function heapDelete(position) {
+        let heap = this.maxHeap.heap;
+        let temp = heap.array[position];
+        heap.array[position] = heap.array[heap.heapSize];
+        heap.array[heap.heapSize] = temp;
+        heap.heapSize -= 1;
+        if (heap.array[position] > heap.array[this.maxHeap.parent(position)]) {
+            increaseKey(position, heap.array[position]);
+        } else {
+            this.maxHeap.heapify(position);
+        }
     }
 
     return function MaxPriorityQueue(array) {
@@ -42,6 +55,7 @@ module.exports = (function() {
         this.maximum = maximum;
         this.extractMaximum = extractMaximum;
         this.increaseKey = increaseKey;
-        this.insert = insert;
+        this.insert = heapInsert;
+        this.delete = heapDelete;
     }
 })();

@@ -30,11 +30,24 @@ module.exports = (function() {
         }
     }
 
-    function insert(key) {
+    function heapInsert(key) {
         let heap = this.minHeap.heap;
         heap.heapSize += 1;
         heap.array[heap.heapSize] = Number.POSITIVE_INFINITY;
         this.decreaseKey(heap.heapSize, key);
+    }
+
+    function heapDelete(position) {
+        let heap = this.minHeap.heap;
+        let temp = heap.array[position];
+        heap.array[position] = heap.array[heap.heapSize];
+        heap.array[heap.heapSize] = temp;
+        heap.heapSize -= 1;
+        if (heap.array[position] < heap.array[this.minHeap.parent(position)]) {
+            increaseKey(position, heap.array[position]);
+        } else {
+            this.minHeap.heapify(position);
+        }
     }
 
     return function MinPriorityQueue(array) {
@@ -42,6 +55,7 @@ module.exports = (function() {
         this.minimum = minimum;
         this.extractMinimum = extractMinimum;
         this.decreaseKey = decreaseKey;
-        this.insert = insert;
+        this.insert = heapInsert;
+        this.delete = heapDelete;
     }
 })();

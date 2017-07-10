@@ -22,11 +22,11 @@ describe("Max Priority Queue", function() {
             assert.equal(3, mpq.extractMaximum());
             assert.equal(2, mpq.extractMaximum());
             assert.equal(1, mpq.extractMaximum());
-            try{
-              mpq.extractMaximum();
-              throw new Error("This should not be thrown");
-            }catch(err){
-              assert.equal("Heap underflow", err.message);
+            try {
+                mpq.extractMaximum();
+                throw new Error("This should not be thrown");
+            } catch (err) {
+                assert.equal("Heap underflow", err.message);
             }
         });
     });
@@ -37,6 +37,16 @@ describe("Max Priority Queue", function() {
             assert.equal(16, mpq.extractMaximum());
             mpq.insert(15);
             assert.deepEqual([15, 14, 10, 4, 8, 9, 3, 2, 1, 7], array);
+        });
+    });
+    describe("Delete", function() {
+        it("Should delete the element at given position in heap", function() {
+            let array = [25, 20, 16, 10, 18, 9, 13, 1, 2, 17];
+            let mpq = new MaxPriorityQueue(array);
+            mpq.delete(0);
+            assert.deepEqual([20, 18, 16, 10, 17, 9, 13, 1, 2, 25], array);
+            mpq.insert(35);
+            assert.deepEqual([35, 20, 16, 10, 18, 9, 13, 1, 2, 17], array);
         });
     });
 });
