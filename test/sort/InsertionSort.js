@@ -15,7 +15,7 @@ describe("Insertion Sort", function() {
             assert.deepEqual([16, 14, 10, 9, 8, 7, 4, 3, 2, 1], array);
         });
     });
-    describe("Asscending", function() {
+    describe("Asscending with recursion", function() {
         it("Should sort random numbers in asscending order", function() {
             let array = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7];
             api.recursiveInsertionSort(array)
